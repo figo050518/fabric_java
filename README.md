@@ -19,45 +19,48 @@ FBClient类中提供query，invoke。
  client_sdk.yaml 文件说明:
 
 
-orderers: #order节点配置
-  orderer0: #自定义order节点名称
-    host: orderer.example.com:7050 #order对应的host，需要端口号
-    useTLS: true #是否启用tls
-    tlsPath: src/test/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt #order对应的tls证书地址，相对路径。 如果userTLS为false，此项为空
-peers: #peer节点配置
-  peer01: #自定义peer名称
-    host: peer0.org1.example.com:7051 #peer节点对应的host，需要携带端口号
-    orgName: org1 #peer节点对应的组织名称
-    useTLS: true #节点是否开启TLS认证
-    tlsPath: src/test/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/server.crt #peer节点对应的TLS 证书地址，相对路径。 如果userTLS为false，此项为空
-  peer02: #通peer01配置说明
-    host: peer0.org2.example.com:9051
-    orgName: org2
-    useTLS: true
-    tlsPath: src/test/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/server.crt
-eventPeers: #监听触发event的peer节点信息（目前apiserver和eventserver分开，此配置apiserver用不到）
-  peer0:
-    host: peer0.org1.example.com:7051
-    orgName: org1
-    useTLS: true
-    tlsPath: /opt/gopath/src/github.com/peersafe/worktool/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/server.crt
-channels: #网络中的channel说明
-  mspConfigPath: src/test/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp #启动的client的对应msp文件路径
-  localMspId:          Org1MSP #组织配置的mspId
-  channelInfo: #具体的channel信息
-    mychannel:  #the first channel name
-      chaincodes:
-        factor: #the first chaincode name installed in channel1
-          chaincodeVersion:    1.0 #链码版本
-          chaincodePolicy:
-            orgs:
-            - org1
-            - org2
-            rule: and #背书策略
-eventchannels: #监听的channel，apiserver暂时用不到
-  mychannel:
-    chaincodes:
-    - factor
+
+orderers: #order节点配置  
+  orderer0: #自定义order节点名称  
+    host: orderer.example.com:7050 #order对应的host，需要端口号  
+    useTLS: true #是否启用tls  
+    tlsPath: src/test/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt #order对应的tls证书地址，相对路径。 如果userTLS为false，此项为空  
+peers: #peer节点配置  
+  peer01: #自定义peer名称  
+    host: peer0.org1.example.com:7051 #peer节点对应的host，需要携带端口号  
+    orgName: org1 #peer节点对应的组织名称  
+    useTLS: true #节点是否开启TLS认证  
+    tlsPath: src/test/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/server.crt #peer节点对应的TLS 证书地址，相对路径。 如果userTLS为false，此项为空  
+  peer02: #通peer01配置说明  
+    host: peer0.org2.example.com:9051  
+    orgName: org2  
+    useTLS: true  
+    tlsPath: src/test/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/server.crt  
+eventPeers: #监听触发event的peer节点信息（目前apiserver和eventserver分开，此配置apiserver用不到  ）  
+  peer0:  
+    host: peer0.org1.example.com:7051  
+    orgName: org1  
+    useTLS: true  
+    tlsPath: /opt/gopath/src/github.com/peersafe/worktool/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/server.crt  
+channels: #网络中的channel说明  
+  mspConfigPath: src/test/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp #启动的client的对应msp文件路径  
+  localMspId:          Org1MSP #组织配置的mspId  
+  channelInfo: #具体的channel信息  
+    mychannel:  #the first channel name  
+      chaincodes:  
+        factor: #the first chaincode name installed in channel1  
+          chaincodeVersion:    1.0 #链码版本  
+          chaincodePolicy:  
+            orgs:  
+            - org1  
+            - org2  
+            rule: and #背书策略  
+eventchannels: #监听的channel，apiserver暂时用不到  
+  mychannel:  
+    chaincodes:  
+    - factor  
+eventName : saveData  
+
 
 
 
