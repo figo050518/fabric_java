@@ -149,6 +149,8 @@ Eventhub event来源，如果是主动查询的话此处为空
 # fabric_java_eventServer
 具有监听机制的客户端。对于发到order的交易请求，通过chaincode中的注册监听机制在这里进行接收，确保消息落账。
 
+contact me ：email:figo050518@outlook.com/ qq：396071808
+
 
 
 
