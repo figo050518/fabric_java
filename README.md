@@ -60,6 +60,8 @@ eventchannels: #监听的channel，apiserver暂时用不到
     - factor
 
 
+
+
 示例（项目启动时调用）：
 @Component
 public class ApplicationStartup implements ApplicationRunner {
