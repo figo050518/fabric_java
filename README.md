@@ -19,7 +19,6 @@ FBClient类中提供query，invoke。
  client_sdk.yaml 文件说明:
 
 
----------------------------------------------------------------------------------------------------------------------------------
 orderers: #order节点配置
   orderer0: #自定义order节点名称
     host: orderer.example.com:7050 #order对应的host，需要端口号
@@ -59,7 +58,8 @@ eventchannels: #监听的channel，apiserver暂时用不到
   mychannel:
     chaincodes:
     - factor
----------------------------------------------------------------------------------------------------------------------------------
+
+
 示例（项目启动时调用）：
 @Component
 public class ApplicationStartup implements ApplicationRunner {
