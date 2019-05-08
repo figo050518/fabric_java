@@ -1,0 +1,89 @@
+---
+crypto:
+  family: ecdsa
+  algorithm: P256-SHA256
+  hash: SHA2-256
+orderers:
+  orderer0:
+    host: orderer.example.com:7050
+    useTLS: true
+    tlsPath: src/test/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crtsrc/test/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
+peers:
+  peer01:
+    host: peer0.org1.example.com:7051
+    orgName: org1
+    useTLS: true
+    tlsPath: src/test/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/server.crt
+  peer02:
+    host: peer0.org2.example.com:9051
+    orgName: org2
+    useTLS: true
+    tlsPath: src/test/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/server.crt
+eventPeers:
+  peer0:
+    host: peer0.org1.example.com:7051
+    orgName: org1
+    useTLS: true
+    tlsPath: /opt/gopath/src/github.com/peersafe/worktool/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/server.crt
+channels:
+    mspConfigPath: src/test/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
+    localMspId:          Org1MSP
+    orgName: org1
+    userName: admin
+    channelInfo:
+      mychannel:  #the first channel name
+        chaincodes:
+          factor: #the first chaincode name installed in channel1
+            chaincodeVersion:    1.0
+            chaincodePolicy:
+              orgs:
+                - org1
+                - org2
+              rule: or
+          factor2:  #the second chaincode name installed in channel1
+            chaincodeVersion:    1.1
+            chaincodePolicy:
+              orgs:
+              - org1
+              rule: or
+      channel2:  #the second channel name
+        chaincodes:
+          fft:  #the first chaincode name installed in channel2
+            chaincodeVersion:    1.1
+            chaincodePolicy:
+              orgs:
+                - org1
+                - org2
+                - org3
+              rule: and
+eventchannels:
+  mychannel:
+    chaincodes:
+      - factor1
+mq:
+  mqEnable: false
+  mqAddress:
+    - "amqp://guest:guest@localhost:5672/"
+    - "amqp://guest:guest@localhost:5673/"
+  queues:
+    queue1:
+      - channel1
+      - channel2
+    queue2:
+      - channel3
+logging:
+    format: "%{color}%{time:2006-01-02 15:04:05.000 MST} [%{module}] %{shortfunc} -> %{level:.4s} %{id:03x}%{color:reset} %{message}"
+    models:
+      sdk: DEBUG
+      apiserver: DEBUG
+      eventserver: DEBUG
+user:
+    id: bankA
+apiserver:
+    authorization:
+      user: "123456"
+      root: "root"
+    listenport: 5984
+    isHttps: false
+other:
+    check_time: 2m

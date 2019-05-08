@@ -1,0 +1,15 @@
+com\app\bean\FBOrderInfo.class
+com\app\bean\FBInvokeRes.class
+com\app\bean\FBInfo.class
+com\app\chaincode\invocation\FbClient.class
+com\app\bean\EventHubInfo.class
+com\app\bean\FBPeerInfo.class
+com\app\chaincode\invocation\SampleStoreEnrollement.class
+com\app\bean\FBChannelInfo.class
+com\app\client\ChannelClient.class
+com\app\config\Config.class
+com\app\user\UserContext.class
+com\app\bean\FBEventPeerInfo.class
+com\app\chaincode\invocation\FbClient$SampleStoreEnrollement.class
+com\app\client\FabricClient.class
+com\app\util\FBUtil.class
